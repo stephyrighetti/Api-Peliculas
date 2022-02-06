@@ -72,25 +72,15 @@ app.put('/api/movies/:id', (req,res) => {
     }
 
     const schema = Joi.object({
-<<<<<<< HEAD
         watched: Joi.boolean().required() 
     });
 
-=======
-        vista: Joi.boolean().required()
-    })
->>>>>>> 56a9d4164731e4aba80832b15b01d54b5ecfd8ca
     const result = schema.validate(req.body);
     if (result.error) {
         return res.status(400).send(result.error.details[0].message);
     }
 
-    movie.watched = req.body.vista
-
-<<<<<<< HEAD
     movie.watched = req.body.watched;
-=======
->>>>>>> 56a9d4164731e4aba80832b15b01d54b5ecfd8ca
     res.send(movie);
 })
 
