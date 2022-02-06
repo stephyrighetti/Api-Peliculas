@@ -2,21 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const Joi = require('joi');
-const date = require('date-and-time');
-
 const now  =  new Date();
-const value = date.format(now,'MM/DD/YYYY HH:mm:ss');
-    //console.log(value);
-
 
 app.use(express.json());
 app.use(cors())
 
-
 const movies = [
-    { id: 1, name: "The lost daughter", watched: false, createdAt: value},
-    { id: 2, name: "The power of dog", watched: false, createdAt: value}, 
-    { id: 3, name: "2046", watched: false, createdAt: value}, 
+    { id: 1, name: "The lost daughter", watched: false, createdAt: now},
+    { id: 2, name: "The power of dog", watched: false, createdAt: now},
+    { id: 3, name: "2046", watched: false, createdAt: now},
 ];
 
 //GET METHOD
@@ -52,7 +46,7 @@ app.post('/api/movies', (req, res) => {
         id: movies.length + 1,
         name: req.body.name,
         watched: false,
-        createdAt: req.body.value
+        createdAt: new Date(),
     };
 
     movies.push(movie);
