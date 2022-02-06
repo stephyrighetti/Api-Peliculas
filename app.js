@@ -8,9 +8,9 @@ app.use(express.json());
 app.use(cors())
 
 const movies = [
-    { id: 1, name: "The lost daughter", watched: false, createdAt: now},
-    { id: 2, name: "The power of dog", watched: false, createdAt: now},
-    { id: 3, name: "2046", watched: false, createdAt: now},
+    { id: 1, name: "The lost daughter", watched: false, createdAt: now, updatedAt: now},
+    { id: 2, name: "The power of dog", watched: false, createdAt: now,  updatedAt: now},
+    { id: 3, name: "2046", watched: false, createdAt: now,  updatedAt: now},
 ];
 
 //GET METHOD
@@ -47,6 +47,7 @@ app.post('/api/movies', (req, res) => {
         name: req.body.name,
         watched: false,
         createdAt: new Date(),
+        updatedAt: new Date()
     };
 
     movies.push(movie);
@@ -75,6 +76,7 @@ app.put('/api/movies/:id', (req,res) => {
     }
 
     movie.watched = req.body.watched;
+    movie.updatedAt = new Date() 
     res.send(movie);
 })
 
